@@ -31,6 +31,40 @@ impl Iterator for EmployeeRecords {
     }
 }
 
+
+//Intoiterator //
+
+struct Book {
+    title: String,
+    author: String,
+    genre: String,
+}
+
+// struct BookIterator {
+//     properties: Vec<String>,
+// }
+
+// impl Iterator for BookIterator {
+//     type Item = String;
+
+//     fn next(&mut self) -> Option<Self::Item> {
+//         if !self.properties.is_empty() {
+//             Some(self.properties.remove(0))
+//         } else {
+//             None
+//         }
+//     }
+// }
+
+    impl IntoIterator for Book {
+        type Item = String;
+        type IntoIter = std::vec::IntoIter<Self::Item>;
+
+        fn into_iter(self) -> Self::IntoIter {
+        vec![self.title, self.author, self.genre].into_iter()
+        }
+    }
+
 fn main() {
     let emp_1 = Employee {
         name: String::from("John"),
@@ -54,5 +88,25 @@ fn main() {
 
     for employee in emp_db {
         println!("{employee}");
+    }
+
+
+
+    // using intoiterator in main
+
+
+    let book = Book {
+        title: String::from("Digital Image Processing"),
+        author: String::from("Gonzale"),
+        genre: String::from("Science Book"),
+    };
+    let mut book_iterator = book.into_iter();
+
+    // println!("{:?} ", book_iterator.next());
+    // println!("{:?} ", book_iterator.next());
+    // println!("{:?} ", book_iterator.next());
+
+    for book_info in book_iterator{
+        println!("{book_info} ");
     }
 }
