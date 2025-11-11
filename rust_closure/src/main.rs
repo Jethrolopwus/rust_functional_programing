@@ -1,7 +1,8 @@
 // closures are anonymous functions which are stored in variables or pass as arguments to other functions
 
-use core::prelude::v1;
+use crate::closures::rust_closures;
 
+pub mod closures;
 struct User {
     name: String,
     age: u8,
@@ -33,5 +34,9 @@ fn main() {
 
 
     println!("User validity {} ", validate_user_simple(&person_1.name));
-    println!("User advance Validity {} ", is_valid_user(&person_1.name, person_1.age, validate_user_simple, validate_user_advance))
+    println!("User advance Validity {} ", is_valid_user(&person_1.name, person_1.age, validate_user_simple, validate_user_advance));
+
+
+    // closures calls 
+    rust_closures();
 }
