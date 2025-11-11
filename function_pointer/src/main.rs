@@ -33,6 +33,7 @@ fn main() {
         salary: 50_000,
     };
     let banned_user = "banned user";
+    
 
     println!("The user Validity {} ",
 
